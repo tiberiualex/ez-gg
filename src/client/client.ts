@@ -1,8 +1,9 @@
 import config from '../config/config';
 import { Routes } from './routes';
 import axios, { AxiosInstance } from 'axios';
-import { Summoner } from '../contracts/riotContracts';
+import { Summoner, League } from '../contracts/riotContracts';
 
+// refactor it to use a factory wrapped by a memoize fn by apikey
 class RiotClient {
   private static clientInstance: RiotClient;
   private axiosInstance: AxiosInstance;
@@ -32,6 +33,14 @@ class RiotClient {
   public async getSummoner(summonerName: string): Promise<Summoner> {
     const response = await this.axiosInstance.request<Summoner>({
       url: `${this.baseUrl}${Routes.SummonerName}${summonerName}`,
+    });
+
+    return response.data;
+  }
+
+  public async getSummonerLeagues(encryptedSummonerId: string): Promise<Array<League>> {
+    const response = await this.axiosInstance.request<Array<League>>({
+      url: `${this.baseUrl}${Routes.League}${encryptedSummonerId}`,
     });
 
     return response.data;
