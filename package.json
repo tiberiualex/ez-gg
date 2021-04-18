@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "https://euw1.api.riotgames.com",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -18,9 +19,8 @@
     "ramda": "^0.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
+    "react-redux": "^7.2.3",
     "react-scripts": "3.4.1",
-    "redux": "^4.0.5",
     "typescript": "~3.7.2"
   },
   "scripts": {
