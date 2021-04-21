@@ -51,7 +51,7 @@ export type Participant = {
   totalMinionsKilled: number;
 };
 
-export type MatchHistory = {
+export type MatchDetails = {
   metadata: {
     participants: Array<MatchId>;
   };
