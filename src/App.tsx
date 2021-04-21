@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './App.css';
 import client from './client/client';
-import SummonerForm from './SummonerForm/SummonerForm';
+import SummonerForm from './components/SummonerForm/SummonerForm';
 // import SummonerInformation from './SummonerInformation/SummonerInformation';
 
-const App: React.FC = () => {
+const App: FC = () => {
   const showSummoner = async (summonerName: string): Promise<void> => {
     const summoner = await client.getSummoner(summonerName);
     const league = await client.getSummonerLeagues(summoner.id);

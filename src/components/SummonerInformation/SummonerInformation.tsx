@@ -1,5 +1,5 @@
 import React from 'react';
-import { League } from './../contracts/riotContracts';
+import { League } from '../../contracts/riotContracts';
 
 type SummonerInformationProps = {
   leagues: Array<League>;
