@@ -13,10 +13,12 @@ export type Rank = 'I' | 'II' | 'III' | 'IV';
 
 export type Queue = 'RANKED_SOLO_5x5';
 
+export type Puuid = string;
+
 export type Summoner = {
   id: string;
   accountId: string;
-  puuid: string;
+  puuid: Puuid;
   name: string;
   profileIconId: number;
   revisionDate: number;
@@ -37,4 +39,21 @@ export type League = {
   inactive: boolean;
   freshBlood: boolean;
   hotStreak: boolean;
+};
+
+export type MatchId = string;
+
+export type Participant = {
+  assists: number;
+  championName: string;
+  deaths: number;
+  kills: number;
+  totalMinionsKilled: number;
+};
+
+export type MatchHistory = {
+  metadata: {
+    participants: Array<MatchId>;
+  };
+  participants: Array<Participant>;
 };

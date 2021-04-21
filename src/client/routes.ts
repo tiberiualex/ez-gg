@@ -1,6 +1,6 @@
 export enum Routes {
   SummonerName = '/summoner/v4/summoners/by-name/',
-  MatchHistory = '/match/v4/matchlists/by-account/',
-  Match = '/match/v4/matches/',
+  MatchDetails = '/match/v5/matches/{matchId}',
+  Matches = '/match/v5/matches/by-puuid/{puuid}/ids',
   League = '/league/v4/entries/by-summoner/',
 }
