@@ -15,10 +15,24 @@ const initialState: SummonerState = {
   leagues: {},
 };
 
-const matchHistorySlice = createSlice({
-  name: 'matches',
-  initialState: summonerAdapter.getInitialState(initialState),
-  reducers: {},
+export const getSummonerByName = createAsyncThunk('summoner/getSummoner', async (name: string) => {
+  return await client.getSummoner(name);
 });
 
-export default matchHistorySlice;
+// const getSummonerLeagues = createAsyncThunk('summoner/getLeagues', async (puuid: Puuid) => {
+//   return await client.getSummonerLeagues(puuid);
+// });
+
+const summonerSlice = createSlice({
+  name: 'summoner',
+  initialState: summonerAdapter.getInitialState(initialState),
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getSummonerByName.fulfilled, (state, action) => {
+      console.log('fetched');
+      state.summoner = action.payload;
+    });
+  },
+});
+
+export default summonerSlice.reducer;

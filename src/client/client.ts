@@ -54,7 +54,7 @@ class RiotClient {
     return response.data;
   }
 
-  public async getMatchInfo(matchId: MatchId) : Promise<MatchDetails> {
+  public async getMatchInfo(matchId: MatchId): Promise<MatchDetails> {
     const response = await this.axiosInstance.request<MatchDetails>({
       url: `${this.baseUrl}${Routes.MatchDetails}${matchId}`,
     });

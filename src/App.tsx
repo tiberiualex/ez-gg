@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
 import './App.css';
-import client from './client/client';
+import { useDispatch } from 'react-redux';
 import SummonerForm from './components/SummonerForm/SummonerForm';
+import { getSummonerByName } from './state/slices/summonerSlice';
 // import SummonerInformation from './SummonerInformation/SummonerInformation';
 
 const App: FC = () => {
-  const showSummoner = async (summonerName: string): Promise<void> => {
-    const summoner = await client.getSummoner(summonerName);
-    const league = await client.getSummonerLeagues(summoner.id);
-    console.log(league);
+  const dispatch = useDispatch();
+
+  const showSummoner = (summonerName: string): void => {
+    dispatch(getSummonerByName(summonerName));
   };
 
   return (
