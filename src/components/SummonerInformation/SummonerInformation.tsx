@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { League } from '../../contracts/riotContracts';
 
 type SummonerInformationProps = {
@@ -6,7 +6,7 @@ type SummonerInformationProps = {
   summonerName: string;
 };
 
-const SummonerInformation: React.FC<SummonerInformationProps> = (props) => {
+const SummonerInformation: FC<SummonerInformationProps> = (props) => {
   return (
     <div className="summoner-information">
       <span>{props.summonerName}</span>

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 type SummonerFormProps = {
   handleSearch: (summoner: string) => void;
 };
 
-const SummonerForm: React.FC<SummonerFormProps> = (props) => {
+const SummonerForm: FC<SummonerFormProps> = (props) => {
   const [summoner, setUsername] = React.useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
