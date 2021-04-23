@@ -17,7 +17,6 @@ class RiotClient {
       headers: {
         'X-Riot-Token': this.apiKey,
         'Accept-Language': 'en-US,en;q=0.9',
-        'Accept-Charset': 'application/x-www-form-urlencoded; charset=UTF-8',
       },
     });
   }

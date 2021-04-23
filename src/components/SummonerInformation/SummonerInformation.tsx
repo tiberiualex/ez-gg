@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { League } from '../../contracts/riotContracts';
+import LeagueComponent from '../League/League';
 
 type SummonerInformationProps = {
   leagues: Array<League>;
@@ -9,11 +10,19 @@ type SummonerInformationProps = {
 const SummonerInformation: FC<SummonerInformationProps> = (props) => {
   return (
     <div className="summoner-information">
-      <span>{props.summonerName}</span>
+      <h4>{props.summonerName}</h4>
       <ul className="leagues">
-        {props.leagues.map((l) => {
-          return <li key={props.summonerName + l.queueType}>{l.tier}</li>;
-        })}
+        {props.leagues.map((l) => (
+          <LeagueComponent
+            key={l.leagueId}
+            rank={l.rank}
+            tier={l.tier}
+            queue={l.queueType}
+            leaguePoints={l.leaguePoints}
+            wins={l.wins}
+            losses={l.losses}
+          />
+        ))}
       </ul>
     </div>
   );

@@ -1,20 +1,17 @@
 import { createSlice, createAsyncThunk, createEntityAdapter, EntityAdapter } from '@reduxjs/toolkit';
 import { Summoner, League, SummonerId } from '../../contracts/riotContracts';
 import client from './../../client/client';
-// import { normalize, schema } from 'normalizr';
+import { RootState } from './../store';
 
-const summonerAdapter: EntityAdapter<SummonerState> = createEntityAdapter();
+const summonerAdapter: EntityAdapter<League> = createEntityAdapter({
+  selectId: (league) => league.leagueId,
+});
 
 type SummonerState = {
   summoner?: Summoner;
-  leagues: {
-    [key: string]: League;
-  };
 };
 
-const initialState: SummonerState = {
-  leagues: {},
-};
+const initialState: SummonerState = {};
 
 export const getSummonerLeagues = createAsyncThunk('summoner/getLeagues', async (id: SummonerId) => {
   return await client.getSummonerLeagues(id);
@@ -26,6 +23,8 @@ export const getSummonerByName = createAsyncThunk('summoner/getSummoner', async 
   return result;
 });
 
+export const selectors = summonerAdapter.getSelectors((state: RootState) => state.summoner);
+
 const summonerSlice = createSlice({
   name: 'summoner',
   initialState: summonerAdapter.getInitialState(initialState),
@@ -33,11 +32,10 @@ const summonerSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getSummonerByName.fulfilled, (state, action) => {
-        console.log('getSummmonerByName::fetched', state, action);
         state.summoner = action.payload;
       })
       .addCase(getSummonerLeagues.fulfilled, (state, action) => {
-        console.log('getSummonerLeagues::fetched', state, action);
+        summonerAdapter.setAll(state, action.payload);
       });
   },
 });
