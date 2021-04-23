@@ -15,8 +15,10 @@ export type Queue = 'RANKED_SOLO_5x5';
 
 export type Puuid = string;
 
+export type SummonerId = string;
+
 export type Summoner = {
-  id: string;
+  id: SummonerId;
   accountId: string;
   puuid: Puuid;
   name: string;
