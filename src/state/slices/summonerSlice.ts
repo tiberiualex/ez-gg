@@ -7,11 +7,17 @@ const summonerAdapter: EntityAdapter<League> = createEntityAdapter({
   selectId: (league) => league.leagueId,
 });
 
+// move to a separate file
+type LoadingState = 'Loading' | 'Loaded' | 'Error' | 'NotLoaded';
+
 type SummonerState = {
   summoner?: Summoner;
+  loaded: LoadingState;
 };
 
-const initialState: SummonerState = {};
+const initialState: SummonerState = {
+  loaded: 'NotLoaded',
+};
 
 export const getSummonerLeagues = createAsyncThunk('summoner/getLeagues', async (id: SummonerId) => {
   return await client.getSummonerLeagues(id);
