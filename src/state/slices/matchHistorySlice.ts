@@ -1,15 +1,13 @@
-// import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
 
-// const matchHistoryAdapter = createEntityAdapter();
+const matchHistoryAdapter = createEntityAdapter();
 
-// const initialState = {
+const initialState = {};
 
-// };
+const matchHistorySlice = createSlice({
+  name: 'matches',
+  initialState,
+  reducers: {},
+});
 
-// const matchHistorySlice = createSlice({
-//   name: 'matches',
-//   initialState,
-//   reducers: {},
-// });
-
-// export default matchHistorySlice;
+export default matchHistorySlice;
